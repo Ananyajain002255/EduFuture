@@ -120,3 +120,90 @@ function deleteWord(){
 }
 
 typeWord();
+
+// Literacy Chart
+
+new Chart(document.getElementById("literacyChart"),{
+
+    type:"doughnut",
+
+    data:{
+
+        labels:["Literate","Remaining"],
+
+        datasets:[{
+
+            data:[77.7,22.3],
+
+            backgroundColor:[
+                "#2563eb",
+                "#dbeafe"
+            ]
+
+        }]
+
+    },
+
+    options:{
+
+        plugins:{
+            legend:{
+                position:"bottom"
+            }
+        }
+
+    }
+
+});
+
+
+// Enrollment Chart
+
+new Chart(document.getElementById("enrollmentChart"),{
+
+    type:"bar",
+
+    data:{
+
+        labels:[
+            "Primary",
+            "Secondary",
+            "Higher"
+        ],
+
+        datasets:[{
+
+            label:"Enrollment %",
+
+            data:[
+                95,
+                81,
+                62
+            ],
+
+            backgroundColor:[
+                "#2563eb",
+                "#3b82f6",
+                "#60a5fa"
+            ]
+
+        }]
+
+    },
+
+    options:{
+
+        responsive:true,
+
+        scales:{
+
+            y:{
+                beginAtZero:true,
+                max:100
+            }
+
+        }
+
+    }
+
+});
