@@ -203,7 +203,12 @@ body{
 
 .hero-right img{
     width:100%;
-    max-width:520px;
+    max-width:450px;
+}
+
+.floating-card{
+    min-width:190px;
+    text-align:center;
 }
 
 .floating-card{
@@ -217,18 +222,18 @@ body{
 }
 
 .card1{
-    top:10%;
-    left:0;
+    top:8%;
+    left:-20px;
 }
 
 .card2{
-    bottom:20%;
-    right:0;
+    top:45%;
+    right:-20px;
 }
 
 .card3{
-    top:65%;
-    left:10%;
+    bottom:8%;
+    left:30px;
 }
 
 @keyframes float{
