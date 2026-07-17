@@ -207,3 +207,22 @@ new Chart(document.getElementById("enrollmentChart"),{
     }
 
 });
+
+const circles = document.querySelectorAll(".circle");
+
+circles.forEach(circle => {
+
+    const percent = circle.dataset.percent;
+
+    const progress = circle.querySelector(".progress");
+
+    const radius = 60;
+
+    const circumference = 2 * Math.PI * radius;
+
+    progress.style.strokeDasharray = circumference;
+
+    progress.style.strokeDashoffset =
+        circumference - (percent / 100) * circumference;
+
+});okay 
