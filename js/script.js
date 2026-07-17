@@ -1,67 +1,100 @@
 console.log("EduFuture Loaded Successfully!");
+
+// ==========================
+// PRELOADER
+// ==========================
+
+window.addEventListener("load", () => {
+
+    const loader = document.getElementById("preloader");
+
+    if (loader) {
+
+        setTimeout(() => {
+
+            loader.classList.add("hide");
+
+        }, 2000);
+
+    }
+
+});
+
+// ==========================
+// DARK MODE
+// ==========================
+
 const themeBtn = document.getElementById("theme-btn");
 
-themeBtn.addEventListener("click", () => {
+if (themeBtn) {
 
-    document.body.classList.toggle("dark");
+    if (localStorage.getItem("theme") === "dark") {
 
-});
+        document.body.classList.add("dark-mode");
 
-/* Animated Counter */
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
 
-const counters = document.querySelectorAll(".counter");
+    } else {
 
-counters.forEach(counter => {
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
 
-    const updateCounter = () => {
+    }
 
-        const target = +counter.getAttribute("data-target");
+    themeBtn.addEventListener("click", () => {
 
-        const count = +counter.innerText;
+        document.body.classList.toggle("dark-mode");
 
-        const increment = target / 150;
+        if (document.body.classList.contains("dark-mode")) {
 
-        if (count < target) {
+            localStorage.setItem("theme", "dark");
 
-            counter.innerText = Math.ceil(count + increment);
+            themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
 
-            setTimeout(updateCounter,15);
+        } else {
 
-        }
+            localStorage.setItem("theme", "light");
 
-        else{
-
-            counter.innerText = target.toLocaleString() + "+";
+            themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
 
         }
 
-    };
+    });
 
-    updateCounter();
+}
 
-});
+// ==========================
+// MOBILE MENU
+// ==========================
 
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.querySelector(".nav-links");
 
-menuBtn.addEventListener("click", () => {
+if (menuBtn && navLinks) {
 
-    navLinks.classList.toggle("show");
+    menuBtn.addEventListener("click", () => {
 
-});
+        navLinks.classList.toggle("show");
+
+    });
+
+}
+
+// ==========================
+// NAVBAR SCROLL
+// ==========================
 
 const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {
 
-    if(window.scrollY > 80){
+    if (!navbar) return;
+
+    if (window.scrollY > 80) {
 
         navbar.style.background = "rgba(255,255,255,.95)";
         navbar.style.boxShadow = "0 8px 25px rgba(0,0,0,.12)";
 
-    }
-
-    else{
+    } else {
 
         navbar.style.background = "rgba(255,255,255,.15)";
         navbar.style.boxShadow = "none";
@@ -70,143 +103,236 @@ window.addEventListener("scroll", () => {
 
 });
 
-const words = [
-    "Quality Education",
-    "Digital Learning",
-    "AI Learning",
-    "Future Skills"
-];
+// ==========================
+// TYPING EFFECT
+// ==========================
 
-let wordIndex = 0;
-let charIndex = 0;
-let typing = document.getElementById("typing");
+const typing = document.getElementById("typing");
 
-function typeWord(){
+if (typing) {
 
-    if(charIndex < words[wordIndex].length){
+    const words = [
 
-        typing.textContent += words[wordIndex].charAt(charIndex);
+        "Quality Education",
 
-        charIndex++;
+        "Digital Learning",
 
-        setTimeout(typeWord,100);
+        "AI Learning",
 
-    }else{
+        "Future Skills"
 
-        setTimeout(deleteWord,1800);
+    ];
 
-    }
+    let wordIndex = 0;
+    let charIndex = 0;
 
-}
+    function typeWord() {
 
-function deleteWord(){
+        if (charIndex < words[wordIndex].length) {
 
-    if(charIndex > 0){
+            typing.textContent += words[wordIndex].charAt(charIndex);
 
-        typing.textContent = words[wordIndex].substring(0,charIndex-1);
+            charIndex++;
 
-        charIndex--;
+            setTimeout(typeWord, 100);
 
-        setTimeout(deleteWord,60);
+        } else {
 
-    }else{
-
-        wordIndex = (wordIndex+1)%words.length;
-
-        setTimeout(typeWord,300);
-
-    }
-
-}
-
-typeWord();
-
-// Literacy Chart
-
-new Chart(document.getElementById("literacyChart"),{
-
-    type:"doughnut",
-
-    data:{
-
-        labels:["Literate","Remaining"],
-
-        datasets:[{
-
-            data:[77.7,22.3],
-
-            backgroundColor:[
-                "#2563eb",
-                "#dbeafe"
-            ]
-
-        }]
-
-    },
-
-    options:{
-
-        plugins:{
-            legend:{
-                position:"bottom"
-            }
-        }
-
-    }
-
-});
-
-
-// Enrollment Chart
-
-new Chart(document.getElementById("enrollmentChart"),{
-
-    type:"bar",
-
-    data:{
-
-        labels:[
-            "Primary",
-            "Secondary",
-            "Higher"
-        ],
-
-        datasets:[{
-
-            label:"Enrollment %",
-
-            data:[
-                95,
-                81,
-                62
-            ],
-
-            backgroundColor:[
-                "#2563eb",
-                "#3b82f6",
-                "#60a5fa"
-            ]
-
-        }]
-
-    },
-
-    options:{
-
-        responsive:true,
-
-        scales:{
-
-            y:{
-                beginAtZero:true,
-                max:100
-            }
+            setTimeout(deleteWord, 1500);
 
         }
 
     }
 
+    function deleteWord() {
+
+        if (charIndex > 0) {
+
+            typing.textContent = words[wordIndex].substring(0, charIndex - 1);
+
+            charIndex--;
+
+            setTimeout(deleteWord, 50);
+
+        } else {
+
+            wordIndex = (wordIndex + 1) % words.length;
+
+            setTimeout(typeWord, 300);
+
+        }
+
+    }
+
+    typeWord();
+
+}
+
+// ==========================
+// COUNTER
+// ==========================
+
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach(counter => {
+
+    const target = +counter.dataset.target;
+
+    let count = 0;
+
+    function updateCounter() {
+
+        const increment = target / 150;
+
+        count += increment;
+
+        if (count < target) {
+
+            counter.innerText = Math.ceil(count).toLocaleString();
+
+            requestAnimationFrame(updateCounter);
+
+        } else {
+
+            counter.innerText = target.toLocaleString() + "+";
+
+        }
+
+    }
+
+    updateCounter();
+
 });
+
+// ==========================
+// CHARTS
+// ==========================
+
+if (typeof Chart !== "undefined") {
+
+    const literacyCanvas = document.getElementById("literacyChart");
+
+    if (literacyCanvas) {
+
+        new Chart(literacyCanvas, {
+
+            type: "doughnut",
+
+            data: {
+
+                labels: ["Literate", "Remaining"],
+
+                datasets: [{
+
+                    data: [77.7, 22.3],
+
+                    backgroundColor: [
+
+                        "#2563eb",
+
+                        "#dbeafe"
+
+                    ]
+
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                plugins: {
+
+                    legend: {
+
+                        position: "bottom"
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    }
+
+    const enrollmentCanvas = document.getElementById("enrollmentChart");
+
+    if (enrollmentCanvas) {
+
+        new Chart(enrollmentCanvas, {
+
+            type: "bar",
+
+            data: {
+
+                labels: [
+
+                    "Primary",
+
+                    "Secondary",
+
+                    "Higher"
+
+                ],
+
+                datasets: [{
+
+                    label: "Enrollment %",
+
+                    data: [
+
+                        95,
+
+                        81,
+
+                        62
+
+                    ],
+
+                    backgroundColor: [
+
+                        "#2563eb",
+
+                        "#3b82f6",
+
+                        "#60a5fa"
+
+                    ]
+
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        max: 100
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    }
+
+}
+
+// ==========================
+// SDG CIRCLES
+// ==========================
 
 const circles = document.querySelectorAll(".circle");
 
@@ -227,65 +353,68 @@ circles.forEach(circle => {
 
 });
 
-const themeBtn = document.getElementById("theme-btn");
+// ==========================
+// SCROLL ANIMATION
+// ==========================
 
-if(localStorage.getItem("theme") === "dark"){
+const observer = new IntersectionObserver(entries => {
 
-    document.body.classList.add("dark-mode");
+    entries.forEach(entry => {
 
-    themeBtn.innerHTML =
-    '<i class="fa-solid fa-sun"></i>';
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+});
+
+document.querySelectorAll(".fade-up").forEach(el => {
+
+    observer.observe(el);
+
+});
+
+// ==========================
+// BACK TO TOP
+// ==========================
+
+const backTop = document.getElementById("backToTop");
+
+if (backTop) {
+
+    backTop.addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    });
 
 }
 
-themeBtn.addEventListener("click",()=>{
+// ==========================
+// CURSOR GLOW
+// ==========================
 
-    document.body.classList.toggle("dark-mode");
+const glow = document.querySelector(".cursor-glow");
 
-    if(document.body.classList.contains("dark-mode")){
+if (glow) {
 
-        localStorage.setItem("theme","dark");
+    document.addEventListener("mousemove", (e) => {
 
-        themeBtn.innerHTML =
-        '<i class="fa-solid fa-sun"></i>';
+        glow.style.left = e.clientX + "px";
 
-    }
+        glow.style.top = e.clientY + "px";
 
-    else{
+    });
 
-        localStorage.setItem("theme","light");
-
-        themeBtn.innerHTML =
-        '<i class="fa-solid fa-moon"></i>';
-
-    }
-
-});
-
-const backTop=document.getElementById("backToTop");
-
-backTop.addEventListener("click",(e)=>{
-
-e.preventDefault();
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-});
-
-window.addEventListener("load",()=>{
-
-    const loader=document.getElementById("preloader");
-
-    setTimeout(()=>{
-
-        loader.classList.add("hide");
-
-    },2200);
-
-});
+}
