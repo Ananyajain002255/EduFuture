@@ -225,4 +225,4 @@ circles.forEach(circle => {
     progress.style.strokeDashoffset =
         circumference - (percent / 100) * circumference;
 
-});okay 
+});
