@@ -199,41 +199,38 @@ body{
     position:relative;
     display:flex;
     justify-content:center;
+    align-items:center;
+    min-height:650px;
 }
 
 .hero-right img{
-    width:100%;
-    max-width:450px;
-}
-
-.floating-card{
-    min-width:190px;
-    text-align:center;
+    width:420px;
+    max-width:100%;
 }
 
 .floating-card{
     position:absolute;
-    background:#fff;
-    padding:15px 22px;
+    width:180px;
+    padding:15px;
+    text-align:center;
+    background:rgba(255,255,255,0.9);
     border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
-    font-weight:600;
-    animation:float 3s ease-in-out infinite;
+    box-shadow:0 10px 20px rgba(0,0,0,0.15);
 }
 
 .card1{
-    top:8%;
-    left:-20px;
+    top:40px;
+    left:0;
 }
 
 .card2{
-    top:45%;
-    right:-20px;
+    top:240px;
+    right:0;
 }
 
 .card3{
-    bottom:8%;
-    left:30px;
+    bottom:40px;
+    left:40px;
 }
 
 @keyframes float{
