@@ -733,3 +733,95 @@ display:flex;
     text-align:center;
 
 }
+
+/* ================= SDG PROGRESS ================= */
+
+.progress-section{
+
+    padding:90px 8%;
+    background:#ffffff;
+
+}
+
+.progress-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:35px;
+
+}
+
+.progress-card{
+
+    background:#fff;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+
+}
+
+.progress-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.circle{
+
+    width:140px;
+    height:140px;
+    margin:auto;
+    position:relative;
+
+}
+
+.circle svg{
+
+    width:140px;
+    height:140px;
+    transform:rotate(-90deg);
+
+}
+
+.circle svg circle{
+
+    fill:none;
+    stroke:#e5e7eb;
+    stroke-width:10;
+    stroke-linecap:round;
+
+}
+
+.circle svg .progress{
+
+    stroke:#2563eb;
+
+    stroke-dasharray:377;
+
+    stroke-dashoffset:377;
+
+}
+
+.number{
+
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+    font-weight:700;
+    color:#2563eb;
+
+}
+
+.progress-card h3{
+
+    margin-top:25px;
+    color:#1e293b;
+
+}
