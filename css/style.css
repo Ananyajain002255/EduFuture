@@ -289,3 +289,37 @@ body{
     max-width:520px;
 
 }
+
+@media(max-width:900px){
+
+.hero{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+padding:60px 6%;
+
+}
+
+.hero-content h1{
+
+font-size:40px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+}
+
+.hero-image img{
+
+max-width:380px;
+
+}
+
+}
