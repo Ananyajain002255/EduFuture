@@ -1,3 +1,29 @@
+:root{
+
+    --bg:#ffffff;
+    --text:#111827;
+    --card:#ffffff;
+    --primary:#2563eb;
+    --secondary:#f8fbff;
+
+}
+
+.dark-mode{
+
+    --bg:#0f172a;
+    --text:#ffffff;
+    --card:#1e293b;
+    --secondary:#111827;
+
+}
+
+body{
+
+    background:var(--bg);
+    color:var(--text);
+    transition:.4s;
+
+}
 *{
     margin:0;
     padding:0;
@@ -200,7 +226,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:650px;
+    min-height:550px;
 }
 
 .hero-right img{
@@ -220,17 +246,17 @@ body{
 
 .card1{
     top:40px;
-    left:0;
+    left:-30px;
 }
 
 .card2{
-    top:240px;
-    right:0;
+    top:250px;
+    right:-30px;
 }
 
 .card3{
-    bottom:40px;
-    left:40px;
+    bottom:50px;
+    left:20px;
 }
 
 @keyframes float{
