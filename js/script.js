@@ -277,3 +277,15 @@ behavior:"smooth"
 });
 
 });
+
+window.addEventListener("load",()=>{
+
+    const loader=document.getElementById("preloader");
+
+    setTimeout(()=>{
+
+        loader.classList.add("hide");
+
+    },2200);
+
+});
