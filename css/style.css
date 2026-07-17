@@ -31,10 +31,6 @@ body{
     font-family:"Poppins",sans-serif;
 }
 
-body{
-    background:#f5f9ff;
-    color:#222;
-}
 
 /* ================= NAVBAR ================= */
 
@@ -70,6 +66,11 @@ body{
 
     transition:.35s;
 
+}
+
+.dark-mode .navbar{
+    background:rgba(15,23,42,.85);
+    border:1px solid rgba(255,255,255,.1);
 }
 
 .logo{
@@ -183,7 +184,7 @@ body{
     justify-content:space-between;
     gap:60px;
     padding:140px 8% 80px;
-    background:linear-gradient(135deg,#eef6ff,#dbeafe);
+     background:var(--secondary);
     overflow:hidden;
 }
 
@@ -276,7 +277,7 @@ body{
 
     text-align:center;
 
-    background:#ffffff;
+   background:var(--bg);
 
 }
 
@@ -364,7 +365,7 @@ body{
 
     padding:90px 8%;
 
-    background:#f8fbff;
+   background:var(--secondary);
 
 }
 
@@ -484,7 +485,7 @@ body{
 
     padding:90px 8%;
 
-    background:white;
+    background:var(--bg);
 
 }
 
@@ -713,7 +714,7 @@ display:flex;
 
     padding:90px 8%;
 
-    background:#f5f9ff;
+    background:var(--secondary);
 
 }
 
@@ -762,7 +763,7 @@ display:flex;
 .progress-section{
 
     padding:90px 8%;
-    background:#ffffff;
+    background:var(--bg);
 
 }
 
@@ -845,6 +846,6 @@ display:flex;
 .progress-card h3{
 
     margin-top:25px;
-    color:#1e293b;
+    color:var(--text);
 
 }
