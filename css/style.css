@@ -2163,3 +2163,18 @@ gap:20px;
     }
 
 }
+
+.hero-img{
+    width:100%;
+    max-width:550px;
+    border-radius:25px;
+    animation:float 4s ease-in-out infinite;
+    filter:drop-shadow(0 20px 30px rgba(37,99,235,.25));
+}
+
+.world-map-img{
+    width:100%;
+    max-width:700px;
+    display:block;
+    margin:auto;
+}
