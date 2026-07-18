@@ -350,31 +350,20 @@ background:linear-gradient(90deg,#2563eb,#06b6d4);
 }
 
 .hero-right{
-
     flex:1;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     position:relative;
-
-    max-width:520px;
-
-    margin:auto;
-
 }
 
 .hero-img{
-
-    width:430px;
-
-    max-width:100%;
-
+    width:100%;
+    max-width:520px;
+    height:auto;
+    object-fit:contain;
     animation:float 4s ease-in-out infinite;
-
+    filter:drop-shadow(0 25px 40px rgba(37,99,235,.25));
 }
 
 .floating-card{
@@ -503,15 +492,6 @@ color:white;
 
 }
 
-.hero-right img{
-
-width:480px;
-
-filter:drop-shadow(0 25px 40px rgba(0,0,0,.15));
-
-animation:float 5s ease-in-out infinite;
-
-}
 
 @keyframes float{
 
@@ -756,11 +736,11 @@ transform:translateY(-18px);
 }
 
 .mission-image img{
-
     width:100%;
-
-    border-radius:20px;
-
+    max-width:500px;
+    display:block;
+    margin:auto;
+    border-radius:25px;
 }
 
 .mission-content{
@@ -2166,7 +2146,9 @@ gap:20px;
 
 .hero-img{
     width:100%;
-    max-width:550px;
+    max-width:520px;
+    height:auto;
+    object-fit:contain;
     border-radius:25px;
     animation:float 4s ease-in-out infinite;
     filter:drop-shadow(0 20px 30px rgba(37,99,235,.25));
@@ -2174,7 +2156,8 @@ gap:20px;
 
 .world-map-img{
     width:100%;
-    max-width:700px;
+    max-width:650px;
     display:block;
     margin:auto;
+    object-fit:contain;
 }
